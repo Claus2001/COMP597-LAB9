@@ -1,3 +1,13 @@
+""" 
+COMP 593 - LAB 9
+Description: 
+    Creates a window where u can coose a pokemon and set a picture of it as your wallpaper
+Usage:
+  python PokeWallpaper.py
+History:
+  Date        Author    Description
+  2022-04-26 C.de la Guardia Finished scipt
+"""
 from http import server
 from tkinter import * 
 from tkinter import ttk
@@ -45,7 +55,12 @@ def main():
 
 
     def handle_poke_select(event):
-
+    """
+    Handles the selection of pokemons from the list
+    :param pokemon_name: gets pokemon name
+    :param image_url: URL of image
+    :param image_path: path where image gets saved
+    """
 
         pokemon_name = cbo_pokemon.get()
         image_url = get_pokemon_image_url(pokemon_name)
@@ -57,6 +72,12 @@ def main():
     cbo_pokemon.bind('<<ComboboxSelected>>', handle_poke_select )
     # handles setting desktop background
     def handle_btn_set_desktop():
+    """
+    Handles the botton that sets the wallpaper
+    :param pokemon_name: gets pokemon name
+    :param image_path: path where image gets saved
+    """
+
         pokemon_name = cbo_pokemon.get()
         image_path = os.path.join(image_dir, pokemon_name + '.png') #makes file name
         set_desktop_bckgrng_img(image_path) # sets wallpaper
